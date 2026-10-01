@@ -4,8 +4,9 @@
 
 Notable changes to the hosted TapeNow workbench at <https://app.tapenow.dev> and to the public tools in this repository. Versions are workbench versions; check the live one at <https://app.tapenow.dev/api/health>. Dates are UTC.
 
-## Unreleased
+## 0.9.13 — 2026-10-01
 
+- **Feedback:** maintainers now get a daily email digest of new reports, so feedback is seen without checking the inbox page. Reporter emails and wallets are not included in the mail.
 - **Public repository.** Verifier, SDKs, specifications, guides and changelog published at TapeNow/tapenow, together with [KEYS.md](KEYS.md), an independent source for the release-signing key fingerprint.
 
 ## 0.9.12 — 2026-10-01
