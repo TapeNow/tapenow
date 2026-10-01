@@ -1,0 +1,18 @@
+name: Feature request · 功能建议
+description: Suggest an improvement to TapeNow or to the tools here. · 对 TapeNow 或本仓库工具的改进建议。
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you trying to solve? · 你遇到了什么问题？
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would help? · 希望怎样改进？
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: What do you do today instead? · 目前是怎么解决的？

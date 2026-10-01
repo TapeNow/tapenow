@@ -1,0 +1,53 @@
+name: Bug report · 问题报告
+description: Something in TapeNow, the verifier or an SDK does not work as described. · TapeNow、验签工具或 SDK 与说明不符。
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please do not include passwords, preview passwords, API keys, private keys or seed phrases. Blur email and wallet addresses you do not want to share.
+        请不要填写密码、预览密码、API 密钥、私钥或助记词。不想公开的邮箱和钱包地址请打码。
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area · 范围
+      options:
+        - Workbench (app.tapenow.dev) · 工作台
+        - Agent tools (WebMCP) · Agent 工具
+        - Gateway site · Gateway 网站
+        - Release verifier (verify/) · 验签工具
+        - SDK (sdk/) · SDK
+        - Documentation · 文档
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce · 复现步骤
+      placeholder: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual result · 预期结果与实际结果
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Workbench version · 工作台版本
+      description: The `version` field at https://app.tapenow.dev/api/health · https://app.tapenow.dev/api/health 中的 `version`
+      placeholder: 0.9.11
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and OS · 浏览器与系统
+      placeholder: Safari 19 · macOS 26
+  - type: textarea
+    id: extra
+    attributes:
+      label: Screenshots, error text, links · 截图、错误提示、链接

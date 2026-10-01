@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability · 安全漏洞
+    url: https://github.com/TapeNow/tapenow/security/advisories/new
+    about: Report privately. Never post security problems in a public issue. · 请私下报告，不要发公开 Issue。
+  - name: Account-specific problem · 与具体账号有关的问题
+    url: https://app.tapenow.dev/?feedback=1
+    about: Use the feedback form in the workbench so you do not post account details publicly. · 请用工作台里的反馈表单，避免公开账号信息。
+  - name: User manual · 用户手册
+    url: https://app.tapenow.dev/docs/manual/
+    about: How to sign in, import, preview and publish. · 登录、导入、预览和发布的使用说明。

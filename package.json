@@ -1,0 +1,17 @@
+{
+  "name": "tapenow",
+  "private": true,
+  "description": "Public tools, specifications and documentation for TapeNow",
+  "license": "Apache-2.0",
+  "type": "module",
+  "homepage": "https://tapenow.dev",
+  "repository": "github:TapeNow/tapenow",
+  "bugs": "https://github.com/TapeNow/tapenow/issues",
+  "engines": {
+    "node": ">=20.11"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "check": "node scripts/check.mjs"
+  }
+}

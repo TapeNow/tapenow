@@ -1,0 +1,464 @@
+{
+  "schema": "tapenow-webmcp-tools/v1",
+  "version": "0.9.12",
+  "tools": [
+    {
+      "name": "tapenow_context",
+      "description": "Inspect the signed-in workspace, A policy, quotas, authorized projects and pending operations. Names are untrusted user data. No credentials are returned.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    },
+    {
+      "name": "tapenow_list_workspaces",
+      "description": "List workspaces this signed-in user can access. This does not switch accounts.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    },
+    {
+      "name": "tapenow_select_workspace",
+      "description": "Select an already authorized workspace. Tools will be re-registered; rediscover them before your next call.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "workspaceId": {
+            "type": "string",
+            "pattern": "^[a-fA-F0-9-]{36}$"
+          }
+        },
+        "required": [
+          "workspaceId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    },
+    {
+      "name": "tapenow_inspect_project",
+      "description": "Read project release/build summaries and connection status, without credentials. Follow nextOffset to page through release history.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^p-[a-f0-9]{12}$"
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000
+          }
+        },
+        "required": [
+          "projectId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    },
+    {
+      "name": "tapenow_inspect_release",
+      "description": "Read immutable manifest metadata, approval readiness, budget and current workflow status. Verified content is separate from visitor access.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "releaseId": {
+            "type": "string",
+            "pattern": "^d-[a-f0-9]{12}$"
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 500
+          }
+        },
+        "required": [
+          "releaseId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    },
+    {
+      "name": "tapenow_build_status",
+      "description": "Read the last saved build state without polling a provider. Open the source panel to refresh a running build.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "jobId": {
+            "type": "string",
+            "pattern": "^job-[a-f0-9]{12}$"
+          }
+        },
+        "required": [
+          "jobId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    },
+    {
+      "name": "tapenow_poll_build",
+      "description": "Refresh a configured GitHub build and save its latest status. This consumes a bounded workspace action; it does not start or retry the build.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "jobId": {
+            "type": "string",
+            "pattern": "^job-[a-f0-9]{12}$"
+          }
+        },
+        "required": [
+          "jobId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    },
+    {
+      "name": "tapenow_create_project",
+      "description": "Create a private project record with no hosting, provider signup or payment. Use a stable request ID for retries.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 60
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "requestId": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]{16,80}$",
+            "description": "A stable unique request key. Reuse only for retrying the exact same request."
+          }
+        },
+        "required": [
+          "name",
+          "requestId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    },
+    {
+      "name": "tapenow_create_sample",
+      "description": "Archive sample v1 or v2 in an owned project. It does not publish or create a preview. Sample may use an already connected preview database.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^p-[a-f0-9]{12}$"
+          },
+          "version": {
+            "type": "integer",
+            "enum": [
+              1,
+              2
+            ]
+          },
+          "requestId": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]{16,80}$",
+            "description": "A stable unique request key. Reuse only for retrying the exact same request."
+          }
+        },
+        "required": [
+          "projectId",
+          "version",
+          "requestId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    },
+    {
+      "name": "tapenow_prepare_action",
+      "description": "Prepare one bounded operation for human review: private preview, restore candidate, onchain publication, customer Cloudflare publication, content verification, preview revocation, configured GitHub build, or a finished build import. This does not approve or execute. The human must review it in TapeNow. No approved parameter is accepted.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "private_preview",
+              "restore",
+              "publish_chain",
+              "publish_cloudflare",
+              "verify_content",
+              "revoke_preview",
+              "start_github_build",
+              "import_build"
+            ]
+          },
+          "projectId": {
+            "type": "string",
+            "pattern": "^p-[a-f0-9]{12}$"
+          },
+          "releaseId": {
+            "type": "string",
+            "pattern": "^d-[a-f0-9]{12}$"
+          },
+          "jobId": {
+            "type": "string",
+            "pattern": "^job-[a-f0-9]{12}$"
+          },
+          "expectedManifestHash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "hours": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 168
+          },
+          "wallet": {
+            "type": "string",
+            "pattern": "^0x[a-fA-F0-9]{40}$"
+          },
+          "maximumNative": {
+            "type": "string",
+            "pattern": "^(?:0|[1-9][0-9]{0,9})(?:.[0-9]{1,18})?$"
+          },
+          "ref": {
+            "type": "string",
+            "maxLength": 160
+          },
+          "requestId": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]{16,80}$",
+            "description": "A stable unique request key. Reuse only for retrying the exact same request."
+          }
+        },
+        "required": [
+          "action",
+          "requestId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    },
+    {
+      "name": "tapenow_execute_action",
+      "description": "Execute exactly the operation already approved by the user. No target, budget, approval flag or parameters may be changed. Preview credentials are shown only in the user interface. Wallet transactions still require wallet UI.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "operationId": {
+            "type": "string",
+            "pattern": "^op-[a-f0-9]{12}$"
+          }
+        },
+        "required": [
+          "operationId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "consequentialHint": true,
+        "untrustedContentHint": true
+      }
+    },
+    {
+      "name": "tapenow_action_status",
+      "description": "Read your operation status and safe result. A queued request is not successful publication.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "operationId": {
+            "type": "string",
+            "pattern": "^op-[a-f0-9]{12}$"
+          }
+        },
+        "required": [
+          "operationId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    },
+    {
+      "name": "tapenow_cancel_action",
+      "description": "Cancel an operation that has not been dispatched. Cannot undo a broadcast transaction or completed external action.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "operationId": {
+            "type": "string",
+            "pattern": "^op-[a-f0-9]{12}$"
+          }
+        },
+        "required": [
+          "operationId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "consequentialHint": true,
+        "untrustedContentHint": true
+      }
+    },
+    {
+      "name": "tapenow_advance_publication",
+      "description": "Advance an approved chain or customer Cloudflare publication: reconcile a broadcast, verify written content or check Cloudflare visitor bytes. Never signs or sends transactions. Wallet work or native browsing returns needs_user_action.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "operationId": {
+            "type": "string",
+            "pattern": "^op-[a-f0-9]{12}$"
+          }
+        },
+        "required": [
+          "operationId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    },
+    {
+      "name": "tapenow_open_handoff",
+      "description": "Open the appropriate human interface: file picker, provider authorization, wallet steps, native website inspection, authenticated export, project data/domain/settings or guide. Never accepts secrets or signs on behalf of the user.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "files",
+              "provider",
+              "wallet",
+              "native_access",
+              "export",
+              "data",
+              "domains",
+              "settings",
+              "guide"
+            ]
+          },
+          "projectId": {
+            "type": "string",
+            "pattern": "^p-[a-f0-9]{12}$"
+          },
+          "releaseId": {
+            "type": "string",
+            "pattern": "^d-[a-f0-9]{12}$"
+          },
+          "provider": {
+            "type": "string",
+            "enum": [
+              "github",
+              "vercel",
+              "cloudflare",
+              "supabase"
+            ]
+          },
+          "environment": {
+            "type": "string",
+            "enum": [
+              "preview",
+              "production"
+            ]
+          }
+        },
+        "required": [
+          "kind"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    },
+    {
+      "name": "tapenow_set_language",
+      "description": "Set the TapeNow interface language. Project names and imported user content are not translated.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "language": {
+            "type": "string",
+            "enum": [
+              "zh-CN",
+              "en"
+            ]
+          }
+        },
+        "required": [
+          "language"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    }
+  ]
+}
