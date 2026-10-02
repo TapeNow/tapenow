@@ -7,7 +7,7 @@ Notable changes to the hosted TapeNow workbench at <https://app.tapenow.dev> and
 ## 0.9.14 — 2026-10-02
 
 - **WebMCP:** the workbench now takes part in Chrome's WebMCP origin trial (Chrome 149–162), so agents can use its page tools in Chrome without turning on a testing flag. Other browsers are unchanged.
-- **Onchain publishing:** files that a new release drops are now removed only after the new files and the entry point are written, so the previous release stays complete while you sign each transaction.
+- **Onchain publishing:** paths that a new release drops are now removed after the new files and the entry point are written, which shortens the window in which files are missing. Updates are still made in place, one transaction at a time: the switch is not atomic, and the site may be inconsistent until every transaction is confirmed.
 
 ## 0.9.13 — 2026-10-01
 
