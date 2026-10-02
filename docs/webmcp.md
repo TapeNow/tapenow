@@ -4,7 +4,7 @@
 
 When you are signed in to the TapeNow workbench in a browser with native [WebMCP](https://github.com/webmachinelearning/webmcp), the page registers tools whose names start with `tapenow_`. An AI agent that can call the current page's tools can then inspect your projects, create samples, prepare releases and continue operations that **you** approved.
 
-Status: invitation beta. The tested combination is Ego (Chromium 152) with an agent that can call the current document's tools. Other browser and agent combinations have not all been verified. These are page tools, not a remote MCP server: there is no MCP URL to paste into another client.
+Status: limited public beta. Supported in Chrome 149 and later, enabled through Chrome's WebMCP origin trial with no testing flag needed (the trial runs through Chrome 162 and ends no later than 29 March 2027). You also need an agent that can call the current document's tools; the full agent workflow was tested in Ego (Chromium 152). Other browsers are not supported yet. These are page tools, not a remote MCP server: there is no MCP URL to paste into another client.
 
 ## Get started
 

@@ -4,6 +4,10 @@
 
 记录线上 TapeNow 工作台（<https://app.tapenow.dev>）和本仓库公开工具的重要变化。版本号即工作台版本，当前线上版本见 <https://app.tapenow.dev/api/health>。日期为 UTC。
 
+## 0.9.15 — 2026-10-02
+
+- **文档：** WebMCP 指南和手册改为支持 Chrome 149 及以上版本，WebMCP 通过 Chrome 的 origin trial 启用（覆盖到 Chrome 162，最晚 2027 年 3 月 29 日结束）。完整的 Agent 操作流程此前在 Ego（Chromium 152）中实测；其他浏览器暂不支持。
+
 ## 0.9.14 — 2026-10-02
 
 - **WebMCP：** 工作台加入了 Chrome 的 WebMCP origin trial（Chrome 149–162），在 Chrome 里不用打开测试 flag，Agent 就能使用页面工具。其他浏览器不变。
