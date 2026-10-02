@@ -4,6 +4,10 @@
 
 Notable changes to the hosted TapeNow workbench at <https://app.tapenow.dev> and to the public tools in this repository. Versions are workbench versions; check the live one at <https://app.tapenow.dev/api/health>. Dates are UTC.
 
+## 0.9.16 — 2026-10-02
+
+- **Docs:** WebMCP tool discovery and calls are now confirmed in Chrome 154 without the testing flag, so the guide no longer limits the tested setup to Ego.
+
 ## 0.9.15 — 2026-10-02
 
 - **Docs:** the WebMCP guide and the manual now name Chrome 149 and later, where WebMCP is enabled through Chrome's origin trial (through Chrome 162, ending no later than 29 March 2027). The full agent workflow was tested in Ego (Chromium 152); other browsers are not supported yet.

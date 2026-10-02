@@ -4,7 +4,7 @@
 
 在支持原生 [WebMCP](https://github.com/webmachinelearning/webmcp) 的浏览器中登录 TapeNow 工作台后，页面会注册一组以 `tapenow_` 开头的工具。能调用当前页面工具的 AI Agent 就可以查询你的项目、创建示例、准备发布，并继续执行**你**批准过的操作。
 
-状态：限量公测。支持 Chrome 149 及以上版本：通过 Chrome 的 WebMCP origin trial 启用，不需要打开测试 flag（试验覆盖到 Chrome 162，最晚 2027 年 3 月 29 日结束）。还需要一个能调用当前页面工具的 Agent；完整的 Agent 操作流程此前在 Ego（Chromium 152）中实测。其他浏览器暂不支持。这些是页面工具，不是远程 MCP 服务器，没有可以填到其他客户端里的 MCP 地址。
+状态：限量公测。支持 Chrome 149 及以上版本：通过 Chrome 的 WebMCP origin trial 启用，不需要打开测试 flag（试验覆盖到 Chrome 162，最晚 2027 年 3 月 29 日结束）。还需要一个能调用当前页面工具的 Agent。2026 年 10 月 2 日已在未开测试 flag 的 Chrome 154 中实测工具发现和调用。其他浏览器暂不支持。这些是页面工具，不是远程 MCP 服务器，没有可以填到其他客户端里的 MCP 地址。
 
 ## 开始使用
 
