@@ -4,6 +4,11 @@
 
 Notable changes to the hosted TapeNow workbench at <https://app.tapenow.dev> and to the public tools in this repository. Versions are workbench versions; check the live one at <https://app.tapenow.dev/api/health>. Dates are UTC.
 
+## 0.9.14 — 2026-10-02
+
+- **WebMCP:** the workbench now takes part in Chrome's WebMCP origin trial (Chrome 149–162), so agents can use its page tools in Chrome without turning on a testing flag. Other browsers are unchanged.
+- **Onchain publishing:** files that a new release drops are now removed only after the new files and the entry point are written, so the previous release stays complete while you sign each transaction.
+
 ## 0.9.13 — 2026-10-01
 
 - **Feedback:** maintainers now get a daily email digest of new reports, so feedback is seen without checking the inbox page. Reporter emails and wallets are not included in the mail.
